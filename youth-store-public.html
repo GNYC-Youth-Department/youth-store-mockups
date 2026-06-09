@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GNYC Youth Shop (Mockup)</title>
+<style>
+:root{
+  --primary-dark:#1A3A5C; --primary:#245E8A; --primary-light:#3B82C4; --primary-soft:#6AABDE;
+  --accent:#E8940A; --accent-light:#F4B03E; --accent-soft:#FCD581;
+  --ink:#1d1d1f; --ink2:#6e6e73; --line:#e3e3e6;
+  --apple-bg:#fbfbfd; --apple-surface:#f5f5f7;
+  --adv:#e8940a; --pf:#245e8a; --mg:#1a3a5c; --tlt:#7f54b3; --dep:#10b981;
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',Roboto,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--apple-bg);color:var(--ink);line-height:1.47;-webkit-font-smoothing:antialiased}
+
+.deck-nav{position:sticky;top:0;z-index:60;background:#0f1724;color:#fff;display:flex;align-items:center;gap:4px;padding:0 20px;height:48px;font-size:13px}
+.deck-nav .dn-brand{font-weight:800;margin-right:14px;font-size:13px}
+.deck-nav a{color:rgba(255,255,255,.6);text-decoration:none;padding:7px 13px;border-radius:8px;font-weight:600}
+.deck-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.deck-nav a.active{color:#fff;background:var(--primary)}
+.deck-nav .dn-tag{margin-left:auto;font-size:11px;font-weight:700;color:var(--accent-light)}
+
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+
+/* Store top bar */
+.store-bar{position:sticky;top:48px;z-index:55;background:rgba(251,251,253,.82);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--line)}
+.store-bar .inner{max-width:1100px;margin:0 auto;height:52px;display:flex;align-items:center;gap:26px;padding:0 22px}
+.store-bar img{height:30px}
+.store-bar .brand{font-weight:700;font-size:15px;color:var(--ink)}
+.store-bar nav{display:flex;gap:24px;margin-left:8px}
+.store-bar nav a{color:var(--ink2);text-decoration:none;font-size:13px;font-weight:500}
+.store-bar nav a:hover{color:var(--ink)}
+.store-bar .right{margin-left:auto;display:flex;gap:18px;align-items:center;color:var(--ink2);font-size:15px}
+.store-bar .cart{position:relative}
+.store-bar .cart .n{position:absolute;top:-7px;right:-9px;background:var(--accent);color:#fff;font-size:9px;font-weight:800;border-radius:10px;padding:1px 5px}
+
+/* Hero */
+.herowrap{background:radial-gradient(130% 100% at 50% -12%,rgba(106,171,222,.42) 0%,rgba(205,224,244,.45) 36%,#f6f8fc 72%);padding:54px 22px 60px;display:flex;justify-content:center}
+.hero-card{max-width:840px;width:100%;text-align:center;background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%);border:1px solid rgba(255,255,255,.75);border-radius:28px;box-shadow:0 20px 55px rgba(26,58,92,.14);padding:40px 40px 28px}
+.hero-card h1{font-size:48px;font-weight:800;letter-spacing:-.02em;line-height:1.05;color:var(--ink)}
+.hero-card h1 .g{background:linear-gradient(120deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-card p{font-size:18px;color:var(--ink2);margin-top:12px;font-weight:500;max-width:600px;margin-left:auto;margin-right:auto}
+.hero-card .cta{margin-top:20px;display:flex;gap:16px;justify-content:center;align-items:center}
+.hero-card .seg{margin-top:22px}
+.btn{display:inline-block;text-decoration:none;font-size:15px;font-weight:600;padding:11px 22px;border-radius:980px;cursor:pointer}
+.btn.fill{background:var(--primary);color:#fff}
+.btn.fill:hover{background:var(--primary-dark)}
+.btn.link{color:var(--primary);padding:11px 0}
+.btn.link:hover{text-decoration:underline}
+
+/* Category segmented control */
+.segwrap{display:flex;justify-content:center;padding:20px 0 8px}
+.seg{display:inline-flex;background:var(--apple-surface);border-radius:980px;padding:5px;gap:2px;flex-wrap:wrap;justify-content:center}
+.seg a{text-decoration:none;font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:980px}
+.seg a.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.seg a:hover:not(.on){color:var(--ink)}
+
+/* Featured spotlight */
+.spot{margin:34px 0;background:linear-gradient(135deg,#13314f,#245e8a);border-radius:26px;color:#fff;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;min-height:330px}
+.spot .copy{padding:48px 44px;align-self:center}
+.spot .copy .ey{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-light)}
+.spot .copy h2{font-size:38px;font-weight:800;letter-spacing:-.02em;margin:10px 0 12px;line-height:1.08}
+.spot .copy p{font-size:16px;color:#d7e3f0;max-width:380px}
+.spot .copy .btn{margin-top:22px;background:#fff;color:var(--primary-dark)}
+.spot .vis{position:relative;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 60% 40%,rgba(255,255,255,.16),transparent 60%)}
+.spot .vis .puck{width:230px;height:230px;border-radius:34px;background:linear-gradient(160deg,#fff,#eef2f7);display:flex;align-items:center;justify-content:center;font-size:120px;box-shadow:0 30px 60px rgba(0,0,0,.3)}
+
+/* Browse by program */
+.h-sec{text-align:center;margin:46px 0 6px}
+.h-sec h3{font-size:32px;font-weight:800;letter-spacing:-.02em}
+.h-sec p{color:var(--ink2);font-size:16px;margin-top:6px}
+.progs{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:22px 0 8px}
+.prog{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 10px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:7px;color:var(--ink);transition:transform .15s,box-shadow .15s}
+.prog:hover{transform:translateY(-3px);box-shadow:0 16px 30px rgba(0,0,0,.09)}
+.prog .logo{height:66px;display:flex;align-items:center;justify-content:center}
+.prog .logo img,.prog .logo svg{max-height:66px;max-width:90px;object-fit:contain}
+.prog .nm{font-weight:700;font-size:13px;letter-spacing:-.01em}
+.prog .ct{font-size:11px;color:var(--ink2)}
+
+/* Product grid */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:24px 0 10px}
+.pcard{background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--line);transition:transform .16s,box-shadow .16s;cursor:pointer;display:flex;flex-direction:column}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.10)}
+.pcard .ph{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative}
+.pcard .ph .sym{font-size:74px;filter:drop-shadow(0 10px 16px rgba(0,0,0,.16))}
+.pcard .ph.adv{background:radial-gradient(circle at 50% 38%,#fff6e8,#fbe7c4)}
+.pcard .ph.pf{background:radial-gradient(circle at 50% 38%,#eef5fc,#cfe2f5)}
+.pcard .ph.mg{background:radial-gradient(circle at 50% 38%,#eaf0f6,#cdd9e8)}
+.pcard .ph.tlt{background:radial-gradient(circle at 50% 38%,#f3edfb,#e0d0f3)}
+.pcard .ph.dep{background:radial-gradient(circle at 50% 38%,#e9fbf3,#c8f0de)}
+.pcard .pk{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);color:var(--primary);font-size:10px;font-weight:800;padding:4px 9px;border-radius:980px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.pcard .body{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1}
+.pcard .cat{font-size:11px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em}
+.pcard .nm{font-size:16px;font-weight:700;margin-top:3px;letter-spacing:-.01em;color:var(--ink)}
+.pcard .row{display:flex;align-items:center;margin-top:14px}
+.pcard .pr{font-size:17px;font-weight:700}
+.pcard .add{margin-left:auto;width:34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600}
+.pcard:hover .add{background:var(--accent)}
+
+/* Pickup banner */
+.pickup{margin:42px 0;background:var(--apple-surface);border-radius:24px;padding:38px 40px;display:flex;align-items:center;gap:26px}
+.pickup .ic{font-size:50px}
+.pickup h4{font-size:24px;font-weight:800;letter-spacing:-.01em}
+.pickup p{color:var(--ink2);font-size:15px;margin-top:4px;max-width:560px}
+.pickup .btn{margin-left:auto;background:var(--ink);color:#fff;flex-shrink:0}
+
+footer.f{background:var(--apple-surface);border-top:1px solid var(--line);margin-top:30px;color:var(--ink2);font-size:12px}
+footer.f .inner{max-width:1100px;margin:0 auto;padding:26px 22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer.f b{color:var(--ink)}
+
+.note{max-width:1100px;margin:0 auto;padding:18px 22px 50px;font-size:12px;color:var(--ink2)}
+@media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}.progs{grid-template-columns:repeat(2,1fr)}.spot{grid-template-columns:1fr}.spot .vis{min-height:240px}.hero-card h1{font-size:40px}.store-bar nav{display:none}}
+
+/* real product imagery */
+.pcard .ph img{width:82%;height:82%;object-fit:contain;filter:drop-shadow(0 14px 20px rgba(0,0,0,.16));transition:transform .18s}
+.pcard:hover .ph img{transform:scale(1.05)}
+.spot .vis .puck img{width:76%;height:76%;object-fit:contain;filter:drop-shadow(0 18px 28px rgba(0,0,0,.35))}
+</style>
+</head>
+<body>
+
+<nav class="deck-nav">
+  <span class="dn-brand">GNYC Youth Store</span>
+  <a href="youth-store-conops.html">1 &middot; Concept of Operations</a>
+  <a href="youth-store-staff.html">2 &middot; Staff Portal</a>
+  <a href="youth-store-public.html" class="active">3 &middot; Public Store</a>
+  <span class="dn-tag">DRAFT v0.1 &middot; redesign concept</span>
+</nav>
+
+<!-- Store bar -->
+<div class="store-bar"><div class="inner">
+  <img src="https://cdn.gnycyouth.org/wp-content/uploads/logo-300x251.png" alt="GNYC" onerror="this.style.display='none'">
+  <span class="brand">Youth Shop</span>
+  <nav>
+    <a href="#">Shop</a><a href="#">Adventurers</a><a href="#">Pathfinders</a><a href="#">Master Guide</a><a href="#">Pickup</a>
+  </nav>
+  <div class="right"><span>&#128269;</span><span class="cart">&#128722;<span class="n">3</span></span></div>
+</div></div>
+
+<!-- Hero -->
+<section class="herowrap">
+  <div class="hero-card">
+    <h1>Wear the <span class="g">journey.</span></h1>
+    <p>Official uniforms, pins, patches, and gear for every Adventurer, Pathfinder, and Master Guide across Greater New York.</p>
+    <div class="cta">
+      <a class="btn fill">Shop the collection</a>
+      <a class="btn link">Pick up at an event &rsaquo;</a>
+    </div>
+    <div class="seg">
+      <a class="on">All</a><a>Adventurers</a><a>Pathfinders</a><a>Master Guide</a><a>TLT</a><a>Mission Trips</a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <!-- Browse by program -->
+  <div class="h-sec"><h3>Shop by program</h3><p>Find exactly what your club needs.</p></div>
+  <div class="progs">
+    <a class="prog"><div class="logo"><img src="images/programs/adventurers.png" alt="Adventurers"></div><div class="nm">Adventurers</div><div class="ct">7 items</div></a>
+    <a class="prog"><div class="logo"><img src="images/programs/pathfinders.png" alt="Pathfinders"></div><div class="nm">Pathfinders</div><div class="ct">7 items</div></a>
+    <a class="prog"><div class="logo"><img src="images/programs/master-guide.png" alt="Master Guide"></div><div class="nm">Master Guide</div><div class="ct">4 items</div></a>
+    <a class="prog"><div class="logo"><img src="images/programs/ay.png" alt="AY Ministries"></div><div class="nm">AY Ministries</div><div class="ct">AY Society</div></a>
+    <a class="prog"><div class="logo"><img src="images/programs/tlt.png" alt="TLT"></div><div class="nm">TLT</div><div class="ct">7 items</div></a>
+    <a class="prog"><div class="logo"><svg viewBox="0 0 92 64" width="86" height="60"><rect x="2" y="5" width="88" height="54" rx="4" fill="#fffdf7" stroke="#d8cbb0" stroke-width="2"/><rect x="6" y="9" width="44" height="46" rx="2" fill="#eaf3ea"/><path d="M8 32 Q20 20 30 30 T50 27" fill="none" stroke="#3b82c4" stroke-width="2" stroke-dasharray="3 3"/><path d="M48 19c-3.3 0-6 2.7-6 6 0 4.5 6 11 6 11s6-6.5 6-11c0-3.3-2.7-6-6-6z" fill="#e8940a"/><circle cx="48" cy="25" r="2.2" fill="#fff"/><rect x="72" y="11" width="14" height="16" rx="1" fill="#fcd581" stroke="#e8940a"/><line x1="57" y1="40" x2="85" y2="40" stroke="#cbd5e1" stroke-width="2"/><line x1="57" y1="46" x2="85" y2="46" stroke="#cbd5e1" stroke-width="2"/><line x1="57" y1="52" x2="78" y2="52" stroke="#cbd5e1" stroke-width="2"/></svg></div><div class="nm">Mission Trips</div><div class="ct">Payment plans</div></a>
+  </div>
+
+  <!-- Product grid -->
+  <div class="h-sec" style="margin-top:40px"><h3>All products</h3><p>Same catalog online, at pickup, and at events.</p></div>
+  <div class="grid">
+    <div class="pcard"><div class="ph mg"><img src="images/store/master-guide-chevron.png" alt="Master Guide Chevron"></div>
+      <div class="body"><div class="cat">Master Guide</div><div class="nm">Master Guide Chevron</div>
+        <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph mg"><span class="pk">Pickup available</span><img src="images/store/master-guide-neckerchief.png" alt="Master Guide Neckerchief"></div>
+      <div class="body"><div class="cat">Master Guide</div><div class="nm">Master Guide Neckerchief</div>
+        <div class="row"><span class="pr">$13.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph mg"><img src="images/store/master-guide-pin.png" alt="Master Guide Pin"></div>
+      <div class="body"><div class="cat">Master Guide</div><div class="nm">Master Guide Pin</div>
+        <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph mg"><span class="pk">Pickup available</span><img src="images/store/master-guide-slide.png" alt="Master Guide Slide"></div>
+      <div class="body"><div class="cat">Master Guide</div><div class="nm">Master Guide Slide</div>
+        <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph adv"><img src="images/store/adventurer-chips-awards.png" alt="Adventurer Chips &amp; Awards"></div>
+      <div class="body"><div class="cat">Adventurers</div><div class="nm">Adventurer Chips & Awards</div>
+        <div class="row"><span class="pr">$2.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph adv"><img src="images/store/adventurer-class-pin.png" alt="Adventurer Class Pin"></div>
+      <div class="body"><div class="cat">Adventurers</div><div class="nm">Adventurer Class Pin</div>
+        <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph adv"><img src="images/store/adventurer-emblem-patch.png" alt="Adventurer Emblem Patch"></div>
+      <div class="body"><div class="cat">Adventurers</div><div class="nm">Adventurer Emblem Patch</div>
+        <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph adv"><img src="images/store/adventurer-induction-pin.png" alt="Adventurer Induction Pin"></div>
+      <div class="body"><div class="cat">Adventurers</div><div class="nm">Adventurer Induction Pin</div>
+        <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph adv"><span class="pk">Pickup available</span><img src="images/store/adventurer-neckerchief.png" alt="Adventurer Neckerchief"></div>
+      <div class="body"><div class="cat">Adventurers</div><div class="nm">Adventurer Neckerchief</div>
+        <div class="row"><span class="pr">$13.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph adv"><span class="pk">Pickup available</span><img src="images/store/adventurer-slide.png" alt="Adventurer Slide"></div>
+      <div class="body"><div class="cat">Adventurers</div><div class="nm">Adventurer Slide</div>
+        <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph adv"><img src="images/store/baptismal-pin.png" alt="Baptismal Pin"></div>
+      <div class="body"><div class="cat">Adventurers</div><div class="nm">Baptismal Pin</div>
+        <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph pf"><img src="images/store/pathfinder-class-pin.png" alt="Pathfinder Class Pin"></div>
+      <div class="body"><div class="cat">Pathfinders</div><div class="nm">Pathfinder Class Pin</div>
+        <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph pf"><img src="images/store/pathfinder-emblem-patch.png" alt="Pathfinder Emblem Patch"></div>
+      <div class="body"><div class="cat">Pathfinders</div><div class="nm">Pathfinder Emblem Patch</div>
+        <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph pf"><img src="images/store/pathfinder-honors.png" alt="Pathfinder Honors"></div>
+      <div class="body"><div class="cat">Pathfinders</div><div class="nm">Pathfinder Honors</div>
+        <div class="row"><span class="pr">$16.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph pf"><img src="images/store/pathfinder-induction-pin.png" alt="Pathfinder Induction Pin"></div>
+      <div class="body"><div class="cat">Pathfinders</div><div class="nm">Pathfinder Induction Pin</div>
+        <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph pf"><span class="pk">Pickup available</span><img src="images/store/pathfinder-neckerchief.png" alt="Pathfinder Neckerchief"></div>
+      <div class="body"><div class="cat">Pathfinders</div><div class="nm">Pathfinder Neckerchief</div>
+        <div class="row"><span class="pr">$13.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph pf"><span class="pk">Pickup available</span><img src="images/store/pathfinder-slide.png" alt="Pathfinder Slide"></div>
+      <div class="body"><div class="cat">Pathfinders</div><div class="nm">Pathfinder Slide</div>
+        <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph pf"><img src="images/store/pathfinder-world-patch.png" alt="Pathfinder World Patch"></div>
+      <div class="body"><div class="cat">Pathfinders</div><div class="nm">Pathfinder World Patch</div>
+        <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph tlt"><img src="images/store/master-tlt-patch.png" alt="Master TLT Patch"></div>
+      <div class="body"><div class="cat">TLT</div><div class="nm">Master TLT Patch</div>
+        <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph tlt"><img src="images/store/teen-leadership-training-tlt-citation-cord.png" alt="TLT Citation Cord"></div>
+      <div class="body"><div class="cat">TLT</div><div class="nm">TLT Citation Cord</div>
+        <div class="row"><span class="pr">$6.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph tlt"><span class="pk">Pickup available</span><img src="images/store/teen-leadership-training-tlt-metal-slide.webp" alt="TLT Metal Slide"></div>
+      <div class="body"><div class="cat">TLT</div><div class="nm">TLT Metal Slide</div>
+        <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph tlt"><img src="images/store/teen-leadership-training-tlt-name-strip.png" alt="TLT Name Strip"></div>
+      <div class="body"><div class="cat">TLT</div><div class="nm">TLT Name Strip</div>
+        <div class="row"><span class="pr">$3.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph tlt"><span class="pk">Pickup available</span><img src="images/store/teen-leadership-training-tlt-neckerchief.png" alt="TLT Neckerchief"></div>
+      <div class="body"><div class="cat">TLT</div><div class="nm">TLT Neckerchief</div>
+        <div class="row"><span class="pr">$13.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph tlt"><img src="images/store/teen-leadership-training-tlt-patch.png" alt="TLT Patch"></div>
+      <div class="body"><div class="cat">TLT</div><div class="nm">TLT Patch</div>
+        <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph tlt"><img src="images/store/teen-leadership-training-tlt-pin.png" alt="TLT Pin"></div>
+      <div class="body"><div class="cat">TLT</div><div class="nm">TLT Pin</div>
+        <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph dep"><img src="images/store/community-in-action.png" alt="Community In Action"></div>
+      <div class="body"><div class="cat">Service</div><div class="nm">Community In Action</div>
+        <div class="row"><span class="pr">$3.00</span><span class="add">+</span></div></div></div>
+    <div class="pcard"><div class="ph dep"><img src="images/store/mission-trip-deposit.jpg" alt="Mission Trip Deposit" style="object-fit:cover;width:100%;height:100%"></div>
+      <div class="body"><div class="cat">Mission Trips</div><div class="nm">Mission Trip Deposit</div>
+        <div class="row"><span class="pr">$50.00</span><span class="add">+</span></div></div></div>
+  </div>
+
+  <!-- Pickup banner -->
+  <section class="pickup">
+    <div class="ic">&#128230;</div>
+    <div><h4>Skip shipping &mdash; pick up at an event</h4>
+      <p>Order online and grab it at the next congress, training, or camporee. Choose a pickup time at checkout and we&rsquo;ll have it ready.</p></div>
+    <a class="btn">How pickup works</a>
+  </section>
+
+</div>
+
+<footer class="f"><div class="inner">
+  <div><b>GNYC Youth Shop</b> &middot; Adventist Youth Ministries &middot; Greater New York Conference</div>
+  <div>Secure checkout by Square &middot; Online, pickup &amp; in-person</div>
+</div></footer>
+
+<div class="note"><b>Mockup &middot; redesign concept.</b> Product images are GNYC&rsquo;s own (pulled from the live shop). Program tiles use the official Adventurer / Pathfinder / Master Guide / TLT / AY Ministries logos (backgrounds removed). The featured emblem is the Master Guide World patch. Prices are illustrative placeholders. Layout, type, and treatment illustrate the proposed Apple-store-grade direction &mdash; it is not the live site.</div>
+
+</body>
+</html>

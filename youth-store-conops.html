@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GNYC Youth Store &middot; Concept of Operations &amp; Mockups</title>
+<style>
+:root{
+  --primary-dark:#1A3A5C; --primary:#245E8A; --primary-light:#3B82C4; --primary-soft:#6AABDE;
+  --accent:#E8940A; --accent-light:#F4B03E; --accent-soft:#FCD581;
+  --bg:#F7F8FA; --surface:#EDF0F5; --border:#D1D8E3;
+  --text-secondary:#64748B; --text-primary:#1E293B;
+  --success:#10B981; --warning:#F59E0B; --error:#EF4444; --info:#8B5CF6;
+  --woo:#7F54B3; --square:#1A1A1A;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text-primary);line-height:1.5;padding:0 0 80px}
+
+/* ---- Layout ---- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+header.top{background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:#fff;padding:38px 0 30px;margin-bottom:36px}
+header.top h1{font-size:28px;font-weight:800;letter-spacing:.2px}
+header.top p{color:var(--primary-soft);font-size:15px;margin-top:6px;font-weight:500}
+header.top .meta{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.pill{font-size:12px;font-weight:700;padding:5px 11px;border-radius:20px;background:rgba(255,255,255,.12);color:#fff}
+.pill.gold{background:var(--accent);color:#fff}
+
+.deck-nav{position:sticky;top:0;z-index:50;background:#0f1724;color:#fff;display:flex;align-items:center;gap:4px;padding:0 20px;height:48px;font-size:13px}
+.deck-nav .dn-brand{font-weight:800;margin-right:14px;font-size:13px}
+.deck-nav a{color:rgba(255,255,255,.6);text-decoration:none;padding:7px 13px;border-radius:8px;font-weight:600}
+.deck-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.deck-nav a.active{color:#fff;background:var(--primary)}
+.deck-nav .dn-tag{margin-left:auto;font-size:11px;font-weight:700;color:var(--accent-light)}
+section{margin-bottom:46px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;border-bottom:2px solid var(--border);padding-bottom:10px}
+.sec-head .num{width:30px;height:30px;border-radius:8px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+.sec-head h2{font-size:20px;font-weight:700;color:var(--primary-dark)}
+.sec-head .sub{color:var(--text-secondary);font-size:13px;font-weight:500;margin-left:auto}
+
+/* ---- Stat cards ---- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.stat .k{font-size:22px;font-weight:800;color:var(--primary)}
+.stat .l{font-size:12px;color:var(--text-secondary);font-weight:600;margin-top:2px}
+.stat.gold .k{color:var(--accent)}
+
+/* ---- Inventory master + sync bar ---- */
+.hub{background:#fff;border:2px solid var(--woo);border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:18px;box-shadow:0 6px 20px rgba(127,84,179,.10)}
+.hub .badge{background:var(--woo);color:#fff;font-weight:800;font-size:13px;padding:8px 14px;border-radius:8px;white-space:nowrap}
+.hub .desc{flex:1}
+.hub .desc b{color:var(--primary-dark)}
+.hub .desc span{color:var(--text-secondary);font-size:13px}
+.sync{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px dashed var(--border);border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;color:var(--text-secondary);white-space:nowrap}
+.sync .sq{background:var(--square);color:#fff;font-weight:800;padding:4px 9px;border-radius:6px;font-size:12px}
+.arrows{color:var(--success);font-weight:800;font-size:16px}
+
+.downlink{text-align:center;color:var(--border);font-size:26px;line-height:1;margin:6px 0}
+
+/* ---- Channel swimlanes ---- */
+.lanes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.lane{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.lane .lh{padding:14px 16px;color:#fff;font-weight:700;font-size:15px;display:flex;align-items:center;gap:9px}
+.lane.online .lh{background:var(--primary)}
+.lane.pickup .lh{background:var(--primary-light)}
+.lane.event .lh{background:var(--accent)}
+.lane .lh .ic{font-size:18px}
+.lane .lh small{margin-left:auto;font-weight:600;font-size:11px;opacity:.85}
+.steps{padding:14px 16px;display:flex;flex-direction:column;gap:0}
+.step{position:relative;padding:0 0 16px 26px}
+.step:last-child{padding-bottom:0}
+.step::before{content:'';position:absolute;left:8px;top:4px;width:11px;height:11px;border-radius:50%;background:#fff;border:3px solid var(--primary-light)}
+.lane.event .step::before{border-color:var(--accent)}
+.lane.pickup .step::before{border-color:var(--primary-light)}
+.step::after{content:'';position:absolute;left:13px;top:15px;bottom:0;width:2px;background:var(--border)}
+.step:last-child::after{display:none}
+.step .t{font-weight:700;font-size:13px;color:var(--text-primary)}
+.step .d{font-size:12px;color:var(--text-secondary);margin-top:1px}
+.step.highlight .t{color:var(--accent)}
+.step .tag{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;border-radius:10px;margin-left:6px;vertical-align:middle}
+.tag.built{background:#dcfce7;color:#166534}
+.tag.sq{background:#e5e7eb;color:#111}
+.tag.woo{background:#f3e8ff;color:#6b21a8}
+.lane .foot{margin-top:auto;padding:11px 16px;background:var(--surface);font-size:12px;color:var(--text-secondary);border-top:1px solid var(--border)}
+.lane .foot b{color:var(--success)}
+
+/* ---- Scan strip ---- */
+.flowstrip{display:flex;align-items:stretch;gap:0;background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.fs{flex:1;padding:18px 14px;text-align:center;position:relative}
+.fs:not(:last-child)::after{content:'\203A';position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-size:26px;color:var(--accent);z-index:2;background:#fff;padding:0 2px}
+.fs .ic{font-size:26px}
+.fs .t{font-weight:700;font-size:13px;margin-top:6px;color:var(--primary-dark)}
+.fs .d{font-size:11px;color:var(--text-secondary);margin-top:2px}
+
+/* ---- Mockups ---- */
+.mocks{display:grid;grid-template-columns:1.15fr 1fr .85fr;gap:20px;align-items:start}
+.mock-cap{font-size:12px;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.4px;margin-bottom:10px}
+
+/* Square terminal frame */
+.terminal{background:#111;border-radius:22px;padding:14px;box-shadow:0 18px 50px rgba(0,0,0,.28)}
+.terminal .screen{background:#fff;border-radius:12px;overflow:hidden}
+.t-bar{background:var(--square);color:#fff;padding:9px 13px;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:space-between}
+.t-bar .dot{width:7px;height:7px;border-radius:50%;background:var(--success);display:inline-block;margin-right:5px}
+.scanbox{margin:12px;border:2px dashed var(--accent);border-radius:10px;padding:12px;text-align:center;background:#fffaf2}
+.scanbox .lbl{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px}
+.cart-row{display:flex;align-items:center;gap:10px;padding:9px 13px;border-top:1px solid var(--surface)}
+.cart-row .thumb{width:34px;height:34px;border-radius:7px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.cart-row .nm{flex:1;font-size:12px}
+.cart-row .nm b{display:block;font-weight:700;font-size:12.5px}
+.cart-row .nm span{color:var(--text-secondary);font-size:11px}
+.cart-row .pr{font-weight:700;font-size:13px}
+.cart-row.new{background:#f0fdf4;animation:none}
+.t-total{display:flex;justify-content:space-between;padding:12px 13px;border-top:2px solid var(--border);font-size:15px;font-weight:800;color:var(--primary-dark)}
+.t-pay{margin:0 12px 14px;background:var(--square);color:#fff;text-align:center;padding:13px;border-radius:10px;font-weight:800;font-size:14px}
+.t-pay small{display:block;font-weight:500;opacity:.7;font-size:10px;margin-top:2px}
+
+/* Phone storefront */
+.phone{background:#000;border-radius:30px;padding:9px;box-shadow:0 18px 50px rgba(0,0,0,.28)}
+.phone .screen{background:#fff;border-radius:22px;overflow:hidden;height:100%}
+.p-top{background:var(--primary-dark);color:#fff;padding:12px 14px;font-weight:700;font-size:13px;display:flex;align-items:center;gap:8px}
+.p-hero{height:120px;background:linear-gradient(135deg,var(--primary-light),var(--primary-soft));display:flex;align-items:center;justify-content:center;font-size:40px}
+.p-body{padding:13px 14px}
+.p-body h4{font-size:15px;font-weight:800}
+.p-body .sku{font-size:11px;color:var(--text-secondary);font-family:ui-monospace,monospace;margin-top:2px}
+.p-price{font-size:20px;font-weight:800;color:var(--primary);margin:8px 0}
+.p-opts{display:flex;gap:6px;margin-bottom:10px}
+.p-opt{border:1px solid var(--border);border-radius:7px;padding:6px 11px;font-size:12px;font-weight:600}
+.p-opt.on{border-color:var(--primary);background:#eef5fc;color:var(--primary)}
+.p-stock{font-size:11px;font-weight:700;color:var(--success);margin-bottom:10px}
+.p-cta{background:var(--accent);color:#fff;text-align:center;padding:11px;border-radius:9px;font-weight:800;font-size:13px}
+.p-cta.alt{background:#fff;color:var(--primary);border:1.5px solid var(--primary);margin-top:7px}
+
+/* Tag / label */
+.tag-label{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:0 6px 20px rgba(0,0,0,.07)}
+.tag-label .org{font-size:11px;font-weight:800;color:var(--primary-dark);letter-spacing:.5px}
+.tag-label .pname{font-size:14px;font-weight:800;margin:6px 0 2px}
+.tag-label .pvar{font-size:12px;color:var(--text-secondary)}
+.tag-label .pprice{font-size:22px;font-weight:800;color:var(--text-primary);margin:8px 0}
+.barcode{height:54px;background:repeating-linear-gradient(90deg,#111 0 2px,#fff 2px 4px,#111 4px 5px,#fff 5px 8px,#111 8px 11px,#fff 11px 12px,#111 12px 14px,#fff 14px 17px);border-radius:2px}
+.bc-num{text-align:center;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:2px;margin-top:4px}
+.tag-foot{display:flex;align-items:center;gap:12px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--border)}
+.qr{width:62px;height:62px;flex-shrink:0}
+.tag-foot .tf{font-size:11px;color:var(--text-secondary)}
+.tag-foot .tf b{color:var(--text-primary);display:block;font-size:12px}
+
+/* ---- Tables ---- */
+table.t{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:13px}
+table.t th{background:var(--primary-dark);color:#fff;text-align:left;padding:11px 14px;font-size:12px;font-weight:700}
+table.t td{padding:11px 14px;border-top:1px solid var(--surface);vertical-align:top}
+table.t tr:nth-child(even) td{background:#fcfdfe}
+table.t code{background:var(--surface);padding:1px 6px;border-radius:5px;font-size:12px}
+
+.callout{display:flex;gap:12px;background:#fffaf2;border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:10px;padding:14px 16px;font-size:13px;color:#7a4a05}
+.callout .ic{font-size:18px}
+.callout b{color:#9a5b06}
+
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--text-secondary);font-weight:600;margin-top:14px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:3px;display:inline-block;font-style:normal}
+
+footer.btm{border-top:2px solid var(--border);padding-top:18px;margin-top:10px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--text-secondary)}
+footer.btm b{color:var(--primary-dark)}
+@media print{body{padding:0}header.top{margin-bottom:24px}section{page-break-inside:avoid}}
+@media(max-width:900px){.stats,.lanes,.mocks{grid-template-columns:1fr}.flowstrip{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+
+<nav class="deck-nav">
+  <span class="dn-brand">GNYC Youth Store</span>
+  <a href="youth-store-conops.html" class="active">1 &middot; Concept of Operations</a>
+  <a href="youth-store-staff.html">2 &middot; Staff Portal</a>
+  <a href="youth-store-public.html">3 &middot; Public Store</a>
+  <span class="dn-tag">DRAFT v0.1</span>
+</nav>
+
+<header class="top">
+  <div class="wrap">
+    <h1>GNYC Youth Store &mdash; Concept of Operations</h1>
+    <p>One catalog, one inventory &middot; three sales channels &middot; end-to-end flow &amp; interface mockups</p>
+    <div class="meta">
+      <span class="pill">WordPress + WooCommerce</span>
+      <span class="pill">Square Terminal POS</span>
+      <span class="pill gold">$0 / month software</span>
+      <span class="pill">DRAFT v0.1 &middot; for review</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 1. At a glance -->
+  <section>
+    <div class="sec-head"><div class="num">1</div><h2>At a glance</h2>
+      <div class="sub">Why this works for a small, volunteer-run team</div></div>
+    <div class="stats">
+      <div class="stat"><div class="k">1</div><div class="l">Source of truth for inventory (WooCommerce)</div></div>
+      <div class="stat"><div class="k">3</div><div class="l">Channels: Pickup @ Queens &middot; Pickup @ Event &middot; In-person</div></div>
+      <div class="stat gold"><div class="k">$0</div><div class="l">Monthly software (Woo + Square free tier)</div></div>
+      <div class="stat"><div class="k">Scan</div><div class="l">to sell &mdash; no browsing while a line waits</div></div>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--success)"></i> Already built / native</span>
+      <span><i style="background:var(--woo)"></i> WooCommerce</span>
+      <span><i style="background:var(--square)"></i> Square</span>
+      <span><i style="background:var(--accent)"></i> In-person highlight</span>
+    </div>
+  </section>
+
+  <!-- 2. CONOPS -->
+  <section>
+    <div class="sec-head"><div class="num">2</div><h2>Concept of Operations &mdash; end to end</h2>
+      <div class="sub">Every channel draws down the same stock</div></div>
+
+    <div class="hub">
+      <div class="badge">WooCommerce<br>Inventory Master</div>
+      <div class="desc"><b>One catalog, one stock count.</b><br>
+        <span>Products, variants, SKUs &amp; barcodes live here. The single source of truth for product inventory &mdash; mirrors the EspoCRM rule for people.</span></div>
+      <div class="sync"><span class="arrows">&#8646;</span> Square for WooCommerce sync<br>(near&#8209;real&#8209;time) <span class="sq">Square</span></div>
+    </div>
+    <div class="downlink">&#9660;</div>
+
+    <div class="lanes">
+      <!-- Online -> Pickup @ Conference -->
+      <div class="lane online">
+        <div class="lh"><span class="ic">&#127970;</span> Online &rarr; Pickup <small>GNYC Queens office</small></div>
+        <div class="steps">
+          <div class="step"><div class="t">Browse &amp; order online</div><div class="d">Elementor + WooCommerce &middot; pays by card <span class="tag sq">Square gateway</span></div></div>
+          <div class="step"><div class="t">Staff packs at the office</div><div class="d">Marks <span class="tag built">Ready for Pickup</span></div></div>
+          <div class="step"><div class="t">Customer picks up in Queens</div><div class="d">GNYC temporary conference location</div></div>
+          <div class="step highlight"><div class="t">Stock decrements</div><div class="d">Same count seen everywhere</div></div>
+        </div>
+        <div class="foot"><b>Customer:</b> no shipping &middot; <b>Staff:</b> Club Ministries at the Queens office</div>
+      </div>
+
+      <!-- Online -> Pickup @ Event -->
+      <div class="lane pickup">
+        <div class="lh"><span class="ic">&#128230;</span> Online &rarr; Pickup <small>at next event</small></div>
+        <div class="steps">
+          <div class="step"><div class="t">Orders online, picks event + slot</div><div class="d">Pickup scheduling <span class="tag built">already built</span></div></div>
+          <div class="step"><div class="t">Reminder email sent</div><div class="d">Sabbath-aware timing <span class="tag built">built</span></div></div>
+          <div class="step"><div class="t">Staff brings it, hands over</div><div class="d">Marks order picked up at the event</div></div>
+          <div class="step highlight"><div class="t">Stock decrements</div><div class="d">Reserved at order, cleared at handover</div></div>
+        </div>
+        <div class="foot"><b>Customer:</b> grab it at the event &middot; <b>Staff:</b> scheduled, not chaotic</div>
+      </div>
+
+      <!-- In-person -->
+      <div class="lane event">
+        <div class="lh"><span class="ic">&#128081;</span> In-person <small>live at events</small></div>
+        <div class="steps">
+          <div class="step highlight"><div class="t">Scan the tag &#9889;</div><div class="d">Square Terminal camera / scanner <span class="tag sq">Square POS</span></div></div>
+          <div class="step"><div class="t">Item drops into cart</div><div class="d">No portal browsing, no lookup</div></div>
+          <div class="step"><div class="t">Customer taps to pay</div><div class="d">Card on the Terminal &middot; receipt</div></div>
+          <div class="step highlight"><div class="t">Stock syncs back to Woo</div><div class="d">Online count updates <span class="tag woo">via sync</span></div></div>
+        </div>
+        <div class="foot"><b>Customer:</b> seconds at the table &middot; <b>Staff:</b> scan &amp; go</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;background:#fffaf2;border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:10px;padding:12px 16px;font-size:13px;color:#7a4a05">
+      &#128230; <b>Ship to home is Phase 2</b> &mdash; not in the current build. Today every order is <b>shop online &rarr; pick up</b> (GNYC Queens office or the next event), or <b>buy in person</b> at the event.
+    </div>
+  </section>
+
+  <!-- 3. Scan-to-sell -->
+  <section>
+    <div class="sec-head"><div class="num">3</div><h2>The line-speed fix &mdash; scan to sell</h2>
+      <div class="sub">Replaces "browse the portal while people wait"</div></div>
+    <div class="flowstrip">
+      <div class="fs"><div class="ic">&#127991;&#65039;</div><div class="t">Tagged once</div><div class="d">SKU + barcode printed per variant</div></div>
+      <div class="fs"><div class="ic">&#128247;</div><div class="t">Scan</div><div class="d">Terminal reads the code</div></div>
+      <div class="fs"><div class="ic">&#128722;</div><div class="t">In cart</div><div class="d">Right item &amp; price, instantly</div></div>
+      <div class="fs"><div class="ic">&#128179;</div><div class="t">Tap to pay</div><div class="d">Card on Square Terminal</div></div>
+      <div class="fs"><div class="ic">&#128260;</div><div class="t">Synced</div><div class="d">Stock updates across channels</div></div>
+    </div>
+  </section>
+
+  <!-- 4. Mockups -->
+  <section>
+    <div class="sec-head"><div class="num">4</div><h2>What it looks like &mdash; mockups</h2>
+      <div class="sub">Illustrative only &middot; editable HTML</div></div>
+    <div class="mocks">
+
+      <!-- Square Terminal POS -->
+      <div>
+        <div class="mock-cap">In-person &middot; Square Terminal (staff)</div>
+        <div class="terminal"><div class="screen">
+          <div class="t-bar"><span><span class="dot"></span> Youth Store &middot; Camporee</span><span>Vol. station 2</span></div>
+          <div class="scanbox">
+            <div class="lbl">&#128247; Scan a tag</div>
+            <div class="barcode" style="margin-top:8px"></div>
+          </div>
+          <div class="cart-row new"><div class="thumb">&#128085;</div><div class="nm"><b>Climb Higher Tee</b><span>Navy &middot; L &middot; TEE-CH-NVY-L</span></div><div class="pr">$22.00</div></div>
+          <div class="cart-row"><div class="thumb">&#128084;</div><div class="nm"><b>Pathfinder Pin</b><span>PIN-PF-STD</span></div><div class="pr">$5.00</div></div>
+          <div class="cart-row"><div class="thumb">&#128130;</div><div class="nm"><b>Water Bottle</b><span>resale &middot; UPC 0&hellip;417</span></div><div class="pr">$8.00</div></div>
+          <div class="t-total"><span>Total &middot; 3 items</span><span>$35.00</span></div>
+          <div class="t-pay">Tap, insert, or swipe<small>Card processed by Square</small></div>
+        </div></div>
+      </div>
+
+      <!-- Phone storefront -->
+      <div>
+        <div class="mock-cap">Online &middot; storefront (customer)</div>
+        <div class="phone" style="height:430px"><div class="screen">
+          <div class="p-top">&#9776; GNYC Youth Store</div>
+          <div class="p-hero">&#128085;</div>
+          <div class="p-body">
+            <h4>Climb Higher Tee</h4>
+            <div class="sku">SKU TEE-CH-NVY-L</div>
+            <div class="p-price">$22.00</div>
+            <div class="p-opts"><span class="p-opt">S</span><span class="p-opt">M</span><span class="p-opt on">L</span><span class="p-opt">XL</span></div>
+            <div class="p-stock">&#9679; In stock &mdash; 14 left</div>
+            <div class="p-cta">Add to cart</div>
+            <div class="p-cta alt">Reserve for pickup</div>
+          </div>
+        </div></div>
+      </div>
+
+      <!-- Printed tag -->
+      <div>
+        <div class="mock-cap">The physical tag (printed once)</div>
+        <div class="tag-label">
+          <div class="org">GNYC YOUTH STORE</div>
+          <div class="pname">Climb Higher Tee</div>
+          <div class="pvar">Navy &middot; Large</div>
+          <div class="pprice">$22.00</div>
+          <div class="barcode"></div>
+          <div class="bc-num">TEE-CH-NVY-L</div>
+          <div class="tag-foot">
+            <svg class="qr" viewBox="0 0 100 100" shape-rendering="crispEdges">
+              <rect width="100" height="100" fill="#fff"/>
+              <!-- finder squares -->
+              <g fill="#111">
+                <rect x="4" y="4" width="26" height="26"/><rect x="70" y="4" width="26" height="26"/><rect x="4" y="70" width="26" height="26"/>
+              </g>
+              <g fill="#fff"><rect x="9" y="9" width="16" height="16"/><rect x="75" y="9" width="16" height="16"/><rect x="9" y="75" width="16" height="16"/></g>
+              <g fill="#111"><rect x="13" y="13" width="8" height="8"/><rect x="79" y="13" width="8" height="8"/><rect x="13" y="79" width="8" height="8"/></g>
+              <!-- scattered modules -->
+              <g fill="#111">
+                <rect x="40" y="6" width="6" height="6"/><rect x="52" y="6" width="6" height="6"/><rect x="40" y="18" width="6" height="6"/><rect x="58" y="18" width="6" height="6"/>
+                <rect x="6" y="40" width="6" height="6"/><rect x="18" y="40" width="6" height="6"/><rect x="6" y="52" width="6" height="6"/><rect x="18" y="58" width="6" height="6"/>
+                <rect x="40" y="40" width="6" height="6"/><rect x="52" y="40" width="6" height="6"/><rect x="64" y="40" width="6" height="6"/><rect x="76" y="40" width="6" height="6"/><rect x="88" y="40" width="6" height="6"/>
+                <rect x="46" y="52" width="6" height="6"/><rect x="58" y="52" width="6" height="6"/><rect x="76" y="52" width="6" height="6"/>
+                <rect x="40" y="64" width="6" height="6"/><rect x="64" y="64" width="6" height="6"/><rect x="88" y="64" width="6" height="6"/>
+                <rect x="46" y="76" width="6" height="6"/><rect x="58" y="76" width="6" height="6"/><rect x="70" y="76" width="6" height="6"/><rect x="88" y="76" width="6" height="6"/>
+                <rect x="40" y="88" width="6" height="6"/><rect x="52" y="88" width="6" height="6"/><rect x="76" y="88" width="6" height="6"/>
+              </g>
+            </svg>
+            <div class="tf"><b>Code 128 + QR</b>Scanner reads the barcode; phones read the QR. Same SKU as online.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. Tagging scheme -->
+  <section>
+    <div class="sec-head"><div class="num">5</div><h2>Tagging scheme &mdash; mixed catalog</h2>
+      <div class="sub">Branded merch vs. resale goods</div></div>
+    <table class="t">
+      <tr><th style="width:22%">Item type</th><th style="width:30%">Tag strategy</th><th>How it's handled</th></tr>
+      <tr><td><b>Branded merch</b><br><span style="color:var(--text-secondary)">tees, pins, curriculum</span></td>
+          <td>Mint our own SKU &rarr; print <code>Code&nbsp;128 + QR</code> tag</td>
+          <td>No usable code exists on the product. Same SKU is used by the online store, pickup, and in-person scanning.</td></tr>
+      <tr><td><b>Resale &mdash; clean UPC</b><br><span style="color:var(--text-secondary)">bottled drinks, packaged goods</span></td>
+          <td>Reuse the manufacturer <code>UPC</code>, mapped once</td>
+          <td>Scan the existing barcode a single time, link it to the product + price. No new tag to print.</td></tr>
+      <tr><td><b>Resale &mdash; no usable code</b><br><span style="color:var(--text-secondary)">loose pins, bulk items</span></td>
+          <td>Treat like branded &mdash; mint a SKU, print a tag</td>
+          <td>Falls back to our own tag so everything scans through one path.</td></tr>
+    </table>
+    <div class="callout" style="margin-top:16px">
+      <span class="ic">&#9881;&#65039;</span>
+      <div><b>Scope note &mdash; not yet built:</b> The conversational AI assistant / MCP integration (which could answer &ldquo;do we have neckerchiefs in stock?&rdquo;) is a <b>planned future phase</b>, not part of this store operation. Everything shown above runs on WooCommerce + Square alone, with no AI dependency.</div>
+    </div>
+  </section>
+
+  <footer class="btm">
+    <div><b>Cost:</b> $0/month software &middot; card processing only (Square ~2.6% + 10&cent; in&#8209;person, ~2.9% + 30&cent; online)</div>
+    <div><b>Principles honored:</b> #6 build custom only where no plugin exists &middot; #7 zero additional licensing cost</div>
+    <div><b>Status:</b> DRAFT v0.1 &mdash; concept for review</div>
+  </footer>
+
+</div>
+</body>
+</html>
