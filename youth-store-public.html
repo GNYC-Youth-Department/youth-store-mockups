@@ -75,8 +75,8 @@ body{background:var(--apple-bg);color:var(--ink);line-height:1.47;-webkit-font-s
 .progs{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:22px 0 8px}
 .prog{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 10px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:7px;color:var(--ink);transition:transform .15s,box-shadow .15s}
 .prog:hover{transform:translateY(-3px);box-shadow:0 16px 30px rgba(0,0,0,.09)}
-.prog .logo{height:66px;display:flex;align-items:center;justify-content:center}
-.prog .logo img,.prog .logo svg{max-height:66px;max-width:90px;object-fit:contain}
+.prog .logo{height:76px;display:flex;align-items:center;justify-content:center}
+.prog .logo img,.prog .logo svg{max-height:72px;max-width:96px;object-fit:contain}
 .prog .nm{font-weight:700;font-size:13px;letter-spacing:-.01em}
 .prog .ct{font-size:11px;color:var(--ink2)}
 
@@ -86,11 +86,6 @@ body{background:var(--apple-bg);color:var(--ink);line-height:1.47;-webkit-font-s
 .pcard:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.10)}
 .pcard .ph{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative}
 .pcard .ph .sym{font-size:74px;filter:drop-shadow(0 10px 16px rgba(0,0,0,.16))}
-.pcard .ph.adv{background:radial-gradient(circle at 50% 38%,#fff6e8,#fbe7c4)}
-.pcard .ph.pf{background:radial-gradient(circle at 50% 38%,#eef5fc,#cfe2f5)}
-.pcard .ph.mg{background:radial-gradient(circle at 50% 38%,#eaf0f6,#cdd9e8)}
-.pcard .ph.tlt{background:radial-gradient(circle at 50% 38%,#f3edfb,#e0d0f3)}
-.pcard .ph.dep{background:radial-gradient(circle at 50% 38%,#e9fbf3,#c8f0de)}
 .pcard .pk{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);color:var(--primary);font-size:10px;font-weight:800;padding:4px 9px;border-radius:980px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
 .pcard .body{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1}
 .pcard .cat{font-size:11px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em}
@@ -112,12 +107,40 @@ footer.f .inner{max-width:1100px;margin:0 auto;padding:26px 22px;display:flex;ju
 footer.f b{color:var(--ink)}
 
 .note{max-width:1100px;margin:0 auto;padding:18px 22px 50px;font-size:12px;color:var(--ink2)}
-@media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}.progs{grid-template-columns:repeat(2,1fr)}.spot{grid-template-columns:1fr}.spot .vis{min-height:240px}.hero-card h1{font-size:40px}.store-bar nav{display:none}}
+@media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}.progs{grid-template-columns:repeat(3,1fr)}.hero-card h1{font-size:40px}.store-bar nav{display:none}.deck-nav{flex-wrap:wrap;height:auto;padding:6px 12px;font-size:12px}.deck-nav .dn-tag{display:none}}@media(max-width:600px){.herowrap{padding:28px 12px 36px}.hero-card{padding:24px 16px 18px}.hero-card h1{font-size:29px}.hero-card p{font-size:15px}.hero-card .cta{flex-direction:column;gap:10px}.seg{font-size:12px}.grid{grid-template-columns:1fr 1fr;gap:12px}.progs{grid-template-columns:repeat(2,1fr)}.pcard .nm{font-size:13px}.pcard .body{padding:12px 12px 14px}.h-sec h3{font-size:23px}.h-sec p{font-size:14px}.spot{display:none}.pickup{flex-direction:column;text-align:left;align-items:flex-start;padding:26px 22px}.pickup .btn{margin-left:0;margin-top:6px}}
 
 /* real product imagery */
 .pcard .ph img{width:82%;height:82%;object-fit:contain;filter:drop-shadow(0 14px 20px rgba(0,0,0,.16));transition:transform .18s}
 .pcard:hover .ph img{transform:scale(1.05)}
 .spot .vis .puck img{width:76%;height:76%;object-fit:contain;filter:drop-shadow(0 18px 28px rgba(0,0,0,.35))}
+/* ===== GNYC Program Color System (per club/ministry) ===== */
+:root{
+  --adv-accent:#2A6CB5;--adv-deep:#163A63;--adv-cta:#2A6CB5;--adv-ring:#2A6CB5;--adv-t1:#EAF2FB;--adv-t2:#D3E4F6;
+  --pf-accent:#DD2026;--pf-deep:#8A1419;--pf-cta:#DD2026;--pf-ring:#F4BE00;--pf-t1:#FDECEC;--pf-t2:#F8D2D2;
+  --mg-accent:#149E8C;--mg-deep:#0E5F54;--mg-cta:#11806F;--mg-ring:#D29A2C;--mg-t1:#E6F7F4;--mg-t2:#C9EEE7;
+  --ay-accent:#1A5FB4;--ay-deep:#123E73;--ay-cta:#1A5FB4;--ay-ring:#F4C20D;--ay-t1:#E9F1FB;--ay-t2:#CFE0F6;
+  --tlt-accent:#B11E34;--tlt-deep:#5E0F1C;--tlt-cta:#B11E34;--tlt-ring:#2A2A2E;--tlt-t1:#F7E9EC;--tlt-t2:#EDD2D8;
+  --svc-accent:#2E9E6B;--svc-deep:#195C3E;--svc-cta:#2E9E6B;--svc-ring:#2E9E6B;--svc-t1:#E7F7EF;--svc-t2:#CBEEDC;
+  --mt-accent:#E08A1E;--mt-deep:#8A5310;--mt-cta:#B5701A;--mt-ring:#E08A1E;--mt-t1:#FDF2E0;--mt-t2:#F8DBB2;
+}
+.p-adv{--accent:var(--adv-accent);--deep:var(--adv-deep);--cta:var(--adv-cta);--ring:var(--adv-ring);--t1:var(--adv-t1);--t2:var(--adv-t2)}
+.p-pf{--accent:var(--pf-accent);--deep:var(--pf-deep);--cta:var(--pf-cta);--ring:var(--pf-ring);--t1:var(--pf-t1);--t2:var(--pf-t2)}
+.p-mg{--accent:var(--mg-accent);--deep:var(--mg-deep);--cta:var(--mg-cta);--ring:var(--mg-ring);--t1:var(--mg-t1);--t2:var(--mg-t2)}
+.p-ay{--accent:var(--ay-accent);--deep:var(--ay-deep);--cta:var(--ay-cta);--ring:var(--ay-ring);--t1:var(--ay-t1);--t2:var(--ay-t2)}
+.p-tlt{--accent:var(--tlt-accent);--deep:var(--tlt-deep);--cta:var(--tlt-cta);--ring:var(--tlt-ring);--t1:var(--tlt-t1);--t2:var(--tlt-t2)}
+.p-svc{--accent:var(--svc-accent);--deep:var(--svc-deep);--cta:var(--svc-cta);--ring:var(--svc-ring);--t1:var(--svc-t1);--t2:var(--svc-t2)}
+.p-mt{--accent:var(--mt-accent);--deep:var(--mt-deep);--cta:var(--mt-cta);--ring:var(--mt-ring);--t1:var(--mt-t1);--t2:var(--mt-t2)}
+/* two-color outline: accent border + ring halo (transparent ring = single outline) */
+.pcard{border:2.5px solid;border-color:var(--accent,#d1d8e3) var(--accent,#d1d8e3) var(--ring,var(--accent,#d1d8e3)) var(--ring,var(--accent,#d1d8e3))}
+.pcard:hover{box-shadow:0 18px 38px rgba(0,0,0,.10)}
+.pcard .ph{background:linear-gradient(150deg,var(--t1,#f5f5f7),var(--t2,#e3e3e6))}
+.pcard .cat{color:var(--deep,#6e6e73)}
+.pcard .pk{color:var(--accent,#245E8A)}
+.pcard .add{background:var(--cta,#245E8A);border:2px solid var(--ring,transparent)}
+.pcard:hover .add{background:var(--deep,#1A3A5C)}
+.prog{border:2.5px solid;border-color:var(--accent,#d1d8e3) var(--accent,#d1d8e3) var(--ring,var(--accent,#d1d8e3)) var(--ring,var(--accent,#d1d8e3))}
+.prog:hover{box-shadow:0 16px 30px rgba(0,0,0,.09)}
+.prog .nm{color:var(--deep,#1d1d1f)}
 </style>
 </head>
 <body>
@@ -160,96 +183,96 @@ footer.f b{color:var(--ink)}
   <!-- Browse by program -->
   <div class="h-sec"><h3>Shop by program</h3><p>Find exactly what your club needs.</p></div>
   <div class="progs">
-    <a class="prog"><div class="logo"><img src="images/programs/adventurers.png" alt="Adventurers"></div><div class="nm">Adventurers</div><div class="ct">7 items</div></a>
-    <a class="prog"><div class="logo"><img src="images/programs/pathfinders.png" alt="Pathfinders"></div><div class="nm">Pathfinders</div><div class="ct">7 items</div></a>
-    <a class="prog"><div class="logo"><img src="images/programs/master-guide.png" alt="Master Guide"></div><div class="nm">Master Guide</div><div class="ct">4 items</div></a>
-    <a class="prog"><div class="logo"><img src="images/programs/ay.png" alt="AY Ministries"></div><div class="nm">AY Ministries</div><div class="ct">AY Society</div></a>
-    <a class="prog"><div class="logo"><img src="images/programs/tlt.png" alt="TLT"></div><div class="nm">TLT</div><div class="ct">7 items</div></a>
-    <a class="prog"><div class="logo"><svg viewBox="0 0 92 64" width="86" height="60"><rect x="2" y="5" width="88" height="54" rx="4" fill="#fffdf7" stroke="#d8cbb0" stroke-width="2"/><rect x="6" y="9" width="44" height="46" rx="2" fill="#eaf3ea"/><path d="M8 32 Q20 20 30 30 T50 27" fill="none" stroke="#3b82c4" stroke-width="2" stroke-dasharray="3 3"/><path d="M48 19c-3.3 0-6 2.7-6 6 0 4.5 6 11 6 11s6-6.5 6-11c0-3.3-2.7-6-6-6z" fill="#e8940a"/><circle cx="48" cy="25" r="2.2" fill="#fff"/><rect x="72" y="11" width="14" height="16" rx="1" fill="#fcd581" stroke="#e8940a"/><line x1="57" y1="40" x2="85" y2="40" stroke="#cbd5e1" stroke-width="2"/><line x1="57" y1="46" x2="85" y2="46" stroke="#cbd5e1" stroke-width="2"/><line x1="57" y1="52" x2="78" y2="52" stroke="#cbd5e1" stroke-width="2"/></svg></div><div class="nm">Mission Trips</div><div class="ct">Payment plans</div></a>
+    <a class="prog p-adv"><div class="logo"><img src="images/programs/adventurers.png" alt="Adventurers"></div><div class="nm">Adventurers</div><div class="ct">7 items</div></a>
+    <a class="prog p-pf"><div class="logo"><img src="images/programs/pathfinders.png" alt="Pathfinders"></div><div class="nm">Pathfinders</div><div class="ct">7 items</div></a>
+    <a class="prog p-mg"><div class="logo"><img src="images/programs/master-guide.png" alt="Master Guide"></div><div class="nm">Master Guide</div><div class="ct">4 items</div></a>
+    <a class="prog p-ay"><div class="logo"><img src="images/programs/ay.png" alt="AY Ministries"></div><div class="nm">AY Ministries</div><div class="ct">AY Society</div></a>
+    <a class="prog p-tlt"><div class="logo"><img src="images/programs/tlt.png" alt="TLT"></div><div class="nm">TLT</div><div class="ct">7 items</div></a>
+    <a class="prog p-mt"><div class="logo"><svg viewBox="0 0 92 64" width="86" height="60"><rect x="2" y="5" width="88" height="54" rx="4" fill="#fffdf7" stroke="#d8cbb0" stroke-width="2"/><rect x="6" y="9" width="44" height="46" rx="2" fill="#eaf3ea"/><path d="M8 32 Q20 20 30 30 T50 27" fill="none" stroke="#3b82c4" stroke-width="2" stroke-dasharray="3 3"/><path d="M48 19c-3.3 0-6 2.7-6 6 0 4.5 6 11 6 11s6-6.5 6-11c0-3.3-2.7-6-6-6z" fill="#e8940a"/><circle cx="48" cy="25" r="2.2" fill="#fff"/><rect x="72" y="11" width="14" height="16" rx="1" fill="#fcd581" stroke="#e8940a"/><line x1="57" y1="40" x2="85" y2="40" stroke="#cbd5e1" stroke-width="2"/><line x1="57" y1="46" x2="85" y2="46" stroke="#cbd5e1" stroke-width="2"/><line x1="57" y1="52" x2="78" y2="52" stroke="#cbd5e1" stroke-width="2"/></svg></div><div class="nm">Mission Trips</div><div class="ct">Payment plans</div></a>
   </div>
 
   <!-- Product grid -->
   <div class="h-sec" style="margin-top:40px"><h3>All products</h3><p>Same catalog online, at pickup, and at events.</p></div>
   <div class="grid">
-    <div class="pcard"><div class="ph mg"><img src="images/store/master-guide-chevron.png" alt="Master Guide Chevron"></div>
+    <div class="pcard p-mg"><div class="ph"><img src="images/store/master-guide-chevron.png" alt="Master Guide Chevron"></div>
       <div class="body"><div class="cat">Master Guide</div><div class="nm">Master Guide Chevron</div>
         <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph mg"><span class="pk">Pickup available</span><img src="images/store/master-guide-neckerchief.png" alt="Master Guide Neckerchief"></div>
+    <div class="pcard p-mg"><div class="ph"><span class="pk">Pickup available</span><img src="images/store/master-guide-neckerchief.png" alt="Master Guide Neckerchief"></div>
       <div class="body"><div class="cat">Master Guide</div><div class="nm">Master Guide Neckerchief</div>
         <div class="row"><span class="pr">$13.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph mg"><img src="images/store/master-guide-pin.png" alt="Master Guide Pin"></div>
+    <div class="pcard p-mg"><div class="ph"><img src="images/store/master-guide-pin.png" alt="Master Guide Pin"></div>
       <div class="body"><div class="cat">Master Guide</div><div class="nm">Master Guide Pin</div>
         <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph mg"><span class="pk">Pickup available</span><img src="images/store/master-guide-slide.png" alt="Master Guide Slide"></div>
+    <div class="pcard p-mg"><div class="ph"><span class="pk">Pickup available</span><img src="images/store/master-guide-slide.png" alt="Master Guide Slide"></div>
       <div class="body"><div class="cat">Master Guide</div><div class="nm">Master Guide Slide</div>
         <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph adv"><img src="images/store/adventurer-chips-awards.png" alt="Adventurer Chips &amp; Awards"></div>
+    <div class="pcard p-adv"><div class="ph"><img src="images/store/adventurer-chips-awards.png" alt="Adventurer Chips &amp; Awards"></div>
       <div class="body"><div class="cat">Adventurers</div><div class="nm">Adventurer Chips & Awards</div>
         <div class="row"><span class="pr">$2.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph adv"><img src="images/store/adventurer-class-pin.png" alt="Adventurer Class Pin"></div>
+    <div class="pcard p-adv"><div class="ph"><img src="images/store/adventurer-class-pin.png" alt="Adventurer Class Pin"></div>
       <div class="body"><div class="cat">Adventurers</div><div class="nm">Adventurer Class Pin</div>
         <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph adv"><img src="images/store/adventurer-emblem-patch.png" alt="Adventurer Emblem Patch"></div>
+    <div class="pcard p-adv"><div class="ph"><img src="images/store/adventurer-emblem-patch.png" alt="Adventurer Emblem Patch"></div>
       <div class="body"><div class="cat">Adventurers</div><div class="nm">Adventurer Emblem Patch</div>
         <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph adv"><img src="images/store/adventurer-induction-pin.png" alt="Adventurer Induction Pin"></div>
+    <div class="pcard p-adv"><div class="ph"><img src="images/store/adventurer-induction-pin.png" alt="Adventurer Induction Pin"></div>
       <div class="body"><div class="cat">Adventurers</div><div class="nm">Adventurer Induction Pin</div>
         <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph adv"><span class="pk">Pickup available</span><img src="images/store/adventurer-neckerchief.png" alt="Adventurer Neckerchief"></div>
+    <div class="pcard p-adv"><div class="ph"><span class="pk">Pickup available</span><img src="images/store/adventurer-neckerchief.png" alt="Adventurer Neckerchief"></div>
       <div class="body"><div class="cat">Adventurers</div><div class="nm">Adventurer Neckerchief</div>
         <div class="row"><span class="pr">$13.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph adv"><span class="pk">Pickup available</span><img src="images/store/adventurer-slide.png" alt="Adventurer Slide"></div>
+    <div class="pcard p-adv"><div class="ph"><span class="pk">Pickup available</span><img src="images/store/adventurer-slide.png" alt="Adventurer Slide"></div>
       <div class="body"><div class="cat">Adventurers</div><div class="nm">Adventurer Slide</div>
         <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph adv"><img src="images/store/baptismal-pin.png" alt="Baptismal Pin"></div>
+    <div class="pcard p-adv"><div class="ph"><img src="images/store/baptismal-pin.png" alt="Baptismal Pin"></div>
       <div class="body"><div class="cat">Adventurers</div><div class="nm">Baptismal Pin</div>
         <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph pf"><img src="images/store/pathfinder-class-pin.png" alt="Pathfinder Class Pin"></div>
+    <div class="pcard p-pf"><div class="ph"><img src="images/store/pathfinder-class-pin.png" alt="Pathfinder Class Pin"></div>
       <div class="body"><div class="cat">Pathfinders</div><div class="nm">Pathfinder Class Pin</div>
         <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph pf"><img src="images/store/pathfinder-emblem-patch.png" alt="Pathfinder Emblem Patch"></div>
+    <div class="pcard p-pf"><div class="ph"><img src="images/store/pathfinder-emblem-patch.png" alt="Pathfinder Emblem Patch"></div>
       <div class="body"><div class="cat">Pathfinders</div><div class="nm">Pathfinder Emblem Patch</div>
         <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph pf"><img src="images/store/pathfinder-honors.png" alt="Pathfinder Honors"></div>
+    <div class="pcard p-pf"><div class="ph"><img src="images/store/pathfinder-honors.png" alt="Pathfinder Honors"></div>
       <div class="body"><div class="cat">Pathfinders</div><div class="nm">Pathfinder Honors</div>
         <div class="row"><span class="pr">$16.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph pf"><img src="images/store/pathfinder-induction-pin.png" alt="Pathfinder Induction Pin"></div>
+    <div class="pcard p-pf"><div class="ph"><img src="images/store/pathfinder-induction-pin.png" alt="Pathfinder Induction Pin"></div>
       <div class="body"><div class="cat">Pathfinders</div><div class="nm">Pathfinder Induction Pin</div>
         <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph pf"><span class="pk">Pickup available</span><img src="images/store/pathfinder-neckerchief.png" alt="Pathfinder Neckerchief"></div>
+    <div class="pcard p-pf"><div class="ph"><span class="pk">Pickup available</span><img src="images/store/pathfinder-neckerchief.png" alt="Pathfinder Neckerchief"></div>
       <div class="body"><div class="cat">Pathfinders</div><div class="nm">Pathfinder Neckerchief</div>
         <div class="row"><span class="pr">$13.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph pf"><span class="pk">Pickup available</span><img src="images/store/pathfinder-slide.png" alt="Pathfinder Slide"></div>
+    <div class="pcard p-pf"><div class="ph"><span class="pk">Pickup available</span><img src="images/store/pathfinder-slide.png" alt="Pathfinder Slide"></div>
       <div class="body"><div class="cat">Pathfinders</div><div class="nm">Pathfinder Slide</div>
         <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph pf"><img src="images/store/pathfinder-world-patch.png" alt="Pathfinder World Patch"></div>
+    <div class="pcard p-pf"><div class="ph"><img src="images/store/pathfinder-world-patch.png" alt="Pathfinder World Patch"></div>
       <div class="body"><div class="cat">Pathfinders</div><div class="nm">Pathfinder World Patch</div>
         <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph tlt"><img src="images/store/master-tlt-patch.png" alt="Master TLT Patch"></div>
+    <div class="pcard p-tlt"><div class="ph"><img src="images/store/master-tlt-patch.png" alt="Master TLT Patch"></div>
       <div class="body"><div class="cat">TLT</div><div class="nm">Master TLT Patch</div>
         <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph tlt"><img src="images/store/teen-leadership-training-tlt-citation-cord.png" alt="TLT Citation Cord"></div>
+    <div class="pcard p-tlt"><div class="ph"><img src="images/store/teen-leadership-training-tlt-citation-cord.png" alt="TLT Citation Cord"></div>
       <div class="body"><div class="cat">TLT</div><div class="nm">TLT Citation Cord</div>
         <div class="row"><span class="pr">$6.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph tlt"><span class="pk">Pickup available</span><img src="images/store/teen-leadership-training-tlt-metal-slide.webp" alt="TLT Metal Slide"></div>
+    <div class="pcard p-tlt"><div class="ph"><span class="pk">Pickup available</span><img src="images/store/teen-leadership-training-tlt-metal-slide.webp" alt="TLT Metal Slide"></div>
       <div class="body"><div class="cat">TLT</div><div class="nm">TLT Metal Slide</div>
         <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph tlt"><img src="images/store/teen-leadership-training-tlt-name-strip.png" alt="TLT Name Strip"></div>
+    <div class="pcard p-tlt"><div class="ph"><img src="images/store/teen-leadership-training-tlt-name-strip.png" alt="TLT Name Strip"></div>
       <div class="body"><div class="cat">TLT</div><div class="nm">TLT Name Strip</div>
         <div class="row"><span class="pr">$3.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph tlt"><span class="pk">Pickup available</span><img src="images/store/teen-leadership-training-tlt-neckerchief.png" alt="TLT Neckerchief"></div>
+    <div class="pcard p-tlt"><div class="ph"><span class="pk">Pickup available</span><img src="images/store/teen-leadership-training-tlt-neckerchief.png" alt="TLT Neckerchief"></div>
       <div class="body"><div class="cat">TLT</div><div class="nm">TLT Neckerchief</div>
         <div class="row"><span class="pr">$13.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph tlt"><img src="images/store/teen-leadership-training-tlt-patch.png" alt="TLT Patch"></div>
+    <div class="pcard p-tlt"><div class="ph"><img src="images/store/teen-leadership-training-tlt-patch.png" alt="TLT Patch"></div>
       <div class="body"><div class="cat">TLT</div><div class="nm">TLT Patch</div>
         <div class="row"><span class="pr">$4.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph tlt"><img src="images/store/teen-leadership-training-tlt-pin.png" alt="TLT Pin"></div>
+    <div class="pcard p-tlt"><div class="ph"><img src="images/store/teen-leadership-training-tlt-pin.png" alt="TLT Pin"></div>
       <div class="body"><div class="cat">TLT</div><div class="nm">TLT Pin</div>
         <div class="row"><span class="pr">$5.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph dep"><img src="images/store/community-in-action.png" alt="Community In Action"></div>
+    <div class="pcard p-svc"><div class="ph"><img src="images/store/community-in-action.png" alt="Community In Action"></div>
       <div class="body"><div class="cat">Service</div><div class="nm">Community In Action</div>
         <div class="row"><span class="pr">$3.00</span><span class="add">+</span></div></div></div>
-    <div class="pcard"><div class="ph dep"><img src="images/store/mission-trip-deposit.jpg" alt="Mission Trip Deposit" style="object-fit:cover;width:100%;height:100%"></div>
+    <div class="pcard p-mt"><div class="ph"><img src="images/store/mission-trip-deposit.jpg" alt="Mission Trip Deposit" style="object-fit:cover;width:100%;height:100%"></div>
       <div class="body"><div class="cat">Mission Trips</div><div class="nm">Mission Trip Deposit</div>
         <div class="row"><span class="pr">$50.00</span><span class="add">+</span></div></div></div>
   </div>

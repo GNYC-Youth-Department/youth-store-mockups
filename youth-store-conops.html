@@ -153,6 +153,18 @@ table.t code{background:var(--surface);padding:1px 6px;border-radius:5px;font-si
 .callout{display:flex;gap:12px;background:#fffaf2;border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:10px;padding:14px 16px;font-size:13px;color:#7a4a05}
 .callout .ic{font-size:18px}
 .callout b{color:#9a5b06}
+.reco-lead{background:#fffaf2;border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:10px;padding:14px 18px;font-size:14px;color:var(--text-primary)}
+.reco-lead b{color:var(--primary-dark)}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+.col{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px}
+.col h4{font-size:14px;font-weight:800;margin-bottom:10px}
+.col.no h4{color:var(--error)} .col.yes h4{color:var(--success)}
+.col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.col li{font-size:13px;color:var(--text-secondary);padding-left:20px;position:relative}
+.col li::before{position:absolute;left:0;top:0;font-weight:800}
+.col.no li::before{content:'\2715';color:var(--error)}
+.col.yes li::before{content:'\2713';color:var(--success)}
+.col li b{color:var(--text-primary)}
 
 .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--text-secondary);font-weight:600;margin-top:14px}
 .legend span{display:inline-flex;align-items:center;gap:6px}
@@ -161,7 +173,7 @@ table.t code{background:var(--surface);padding:1px 6px;border-radius:5px;font-si
 footer.btm{border-top:2px solid var(--border);padding-top:18px;margin-top:10px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--text-secondary)}
 footer.btm b{color:var(--primary-dark)}
 @media print{body{padding:0}header.top{margin-bottom:24px}section{page-break-inside:avoid}}
-@media(max-width:900px){.stats,.lanes,.mocks{grid-template-columns:1fr}.flowstrip{flex-wrap:wrap}}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.lanes,.mocks,.why{grid-template-columns:1fr}.deck-nav{flex-wrap:wrap;height:auto;padding:6px 12px;font-size:12px}.deck-nav .dn-tag{display:none}.hub{flex-direction:column;align-items:flex-start;gap:12px}.flowstrip{flex-direction:column}.fs:not(:last-child)::after{display:none}}@media(max-width:560px){.stats{grid-template-columns:1fr}.wrap{padding:0 16px}header.top h1{font-size:22px}header.top{padding:28px 0 22px}table.t{font-size:12px}table.t th,table.t td{padding:8px 10px}.sec-head h2{font-size:17px}.sec-head .sub{display:none}}
 </style>
 </head>
 <body>
@@ -356,9 +368,24 @@ footer.btm b{color:var(--primary-dark)}
 
   <!-- 5. Tagging scheme -->
   <section>
-    <div class="sec-head"><div class="num">5</div><h2>Tagging scheme &mdash; mixed catalog</h2>
-      <div class="sub">Branded merch vs. resale goods</div></div>
-    <table class="t">
+    <div class="sec-head"><div class="num">5</div><h2>Tagging &mdash; the recommendation</h2>
+      <div class="sub">How we label products for fast, accurate sales</div></div>
+    <div class="reco-lead"><b>Recommendation:</b> give every product variant our own SKU and print our own tag &mdash; a <b>Code&nbsp;128 barcode + QR</b>. That one SKU is the single key used online, at pickup, and in person &mdash; and the join key that keeps WooCommerce and Square inventory in sync.</div>
+    <div class="why">
+      <div class="col no"><h4>&#10005; Don't rely on the codes already on products</h4><ul>
+        <li>They identify the <b>blank</b> (style/size/color), not our product or price.</li>
+        <li>Usually on the <b>polybag</b> &mdash; gone once shirts are unbagged.</li>
+        <li><b>Pins, patches, slides, honors</b> have no manufacturer code at all.</li>
+        <li>They <b>change</b> by vendor and restock &mdash; not stable over time.</li>
+      </ul></div>
+      <div class="col yes"><h4>&#10003; Mint our own SKU + tag</h4><ul>
+        <li><b>One consistent system</b> for everything we sell.</li>
+        <li>The <b>same SKU</b> is used online, at pickup, and in person.</li>
+        <li>It's the <b>join key</b> for the WooCommerce &harr; Square sync.</li>
+        <li><b>Resale goods with a clean UPC?</b> Reuse it &mdash; scan once, map to product + price.</li>
+      </ul></div>
+    </div>
+    <table class="t" style="margin-top:16px">
       <tr><th style="width:22%">Item type</th><th style="width:30%">Tag strategy</th><th>How it's handled</th></tr>
       <tr><td><b>Branded merch</b><br><span style="color:var(--text-secondary)">tees, pins, curriculum</span></td>
           <td>Mint our own SKU &rarr; print <code>Code&nbsp;128 + QR</code> tag</td>
