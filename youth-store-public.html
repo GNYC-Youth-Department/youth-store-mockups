@@ -131,14 +131,14 @@ footer.f b{color:var(--ink)}
 .p-svc{--accent:var(--svc-accent);--deep:var(--svc-deep);--cta:var(--svc-cta);--ring:var(--svc-ring);--t1:var(--svc-t1);--t2:var(--svc-t2)}
 .p-mt{--accent:var(--mt-accent);--deep:var(--mt-deep);--cta:var(--mt-cta);--ring:var(--mt-ring);--t1:var(--mt-t1);--t2:var(--mt-t2)}
 /* two-color outline: accent border + ring halo (transparent ring = single outline) */
-.pcard{border:2.5px solid;border-color:var(--accent,#d1d8e3) var(--accent,#d1d8e3) var(--ring,var(--accent,#d1d8e3)) var(--ring,var(--accent,#d1d8e3))}
+.pcard{border:2px solid var(--accent,#d1d8e3)}
 .pcard:hover{box-shadow:0 18px 38px rgba(0,0,0,.10)}
 .pcard .ph{background:linear-gradient(150deg,var(--t1,#f5f5f7),var(--t2,#e3e3e6))}
 .pcard .cat{color:var(--deep,#6e6e73)}
 .pcard .pk{color:var(--accent,#245E8A)}
-.pcard .add{background:var(--cta,#245E8A);border:2px solid var(--ring,transparent)}
+.pcard .add{background:var(--cta,#245E8A);border:2.5px solid var(--ring,#fff)}
 .pcard:hover .add{background:var(--deep,#1A3A5C)}
-.prog{border:2.5px solid;border-color:var(--accent,#d1d8e3) var(--accent,#d1d8e3) var(--ring,var(--accent,#d1d8e3)) var(--ring,var(--accent,#d1d8e3))}
+.prog{border:2px solid var(--accent,#d1d8e3)}
 .prog:hover{box-shadow:0 16px 30px rgba(0,0,0,.09)}
 .prog .nm{color:var(--deep,#1d1d1f)}
 </style>
