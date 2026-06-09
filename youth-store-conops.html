@@ -40,7 +40,7 @@ section{margin-bottom:46px}
 
 /* ---- Stat cards ---- */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.stat{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.stat{background:#fff;border:1px solid rgba(15,23,42,.05);border-radius:16px;padding:18px 20px;box-shadow:0 4px 16px rgba(15,23,42,.04)}
 .stat .k{font-size:22px;font-weight:800;color:var(--primary)}
 .stat .l{font-size:12px;color:var(--text-secondary);font-weight:600;margin-top:2px}
 .stat.gold .k{color:var(--accent)}
@@ -59,7 +59,7 @@ section{margin-bottom:46px}
 
 /* ---- Channel swimlanes ---- */
 .lanes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.lane{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.lane{background:#fff;border:1px solid rgba(15,23,42,.05);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 22px rgba(15,23,42,.05)}
 .lane .lh{padding:14px 16px;color:#fff;font-weight:700;font-size:15px;display:flex;align-items:center;gap:9px}
 .lane.online .lh{background:var(--primary)}
 .lane.pickup .lh{background:var(--primary-light)}
@@ -85,7 +85,7 @@ section{margin-bottom:46px}
 .lane .foot b{color:var(--success)}
 
 /* ---- Scan strip ---- */
-.flowstrip{display:flex;align-items:stretch;gap:0;background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.flowstrip{display:flex;align-items:stretch;gap:0;background:#fff;border:1px solid rgba(15,23,42,.05);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(15,23,42,.04)}
 .fs{flex:1;padding:18px 14px;text-align:center;position:relative}
 .fs:not(:last-child)::after{content:'\203A';position:absolute;right:-9px;top:50%;transform:translateY(-50%);font-size:26px;color:var(--accent);z-index:2;background:#fff;padding:0 2px}
 .fs .ic{font-size:26px}
@@ -144,7 +144,7 @@ section{margin-bottom:46px}
 .tag-foot .tf b{color:var(--text-primary);display:block;font-size:12px}
 
 /* ---- Tables ---- */
-table.t{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;font-size:13px}
+table.t{width:100%;border-collapse:collapse;background:#fff;border:1px solid rgba(15,23,42,.05);border-radius:14px;overflow:hidden;font-size:13px;box-shadow:0 4px 16px rgba(15,23,42,.04)}
 table.t th{background:var(--primary-dark);color:#fff;text-align:left;padding:11px 14px;font-size:12px;font-weight:700}
 table.t td{padding:11px 14px;border-top:1px solid var(--surface);vertical-align:top}
 table.t tr:nth-child(even) td{background:#fcfdfe}
@@ -156,7 +156,7 @@ table.t code{background:var(--surface);padding:1px 6px;border-radius:5px;font-si
 .reco-lead{background:#fffaf2;border:1px solid var(--accent-soft);border-left:4px solid var(--accent);border-radius:10px;padding:14px 18px;font-size:14px;color:var(--text-primary)}
 .reco-lead b{color:var(--primary-dark)}
 .why{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
-.col{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px}
+.col{background:#fff;border:1px solid rgba(15,23,42,.05);border-radius:16px;padding:20px 22px;box-shadow:0 4px 16px rgba(15,23,42,.04)}
 .col h4{font-size:14px;font-weight:800;margin-bottom:10px}
 .col.no h4{color:var(--error)} .col.yes h4{color:var(--success)}
 .col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
