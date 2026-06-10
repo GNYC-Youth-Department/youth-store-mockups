@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GNYC Youth Store &middot; My Journey (Member Screen)</title>
+<style>
+:root{
+  --primary:#245E8A; --primary-dark:#1A3A5C; --accent:#E8940A; --accent-light:#F4B03E;
+  --ink:#1d1d1f; --ink2:#6e6e73; --line:rgba(15,23,42,.06); --bg:#f4f6fa; --surface:#eef1f6;
+  --soft:0 10px 30px rgba(15,23,42,.06); --soft-h:0 22px 46px rgba(15,23,42,.12);
+  --grow:#149E8C; --serve:#E08A1E; --belong:#245E8A; --bi-red:#98202a; --svc:#2E9E6B;
+  --adv:#2A6CB5; --pf:#DD2026; --mg:#149E8C;
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',Roboto,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+
+.deck-nav{position:sticky;top:0;z-index:60;background:#0f1724;color:#fff;display:flex;align-items:center;gap:4px;padding:0 20px;height:48px;font-size:13px}
+.deck-nav .dn-brand{font-weight:800;margin-right:14px;font-size:13px}
+.deck-nav a{color:rgba(255,255,255,.6);text-decoration:none;padding:7px 11px;border-radius:8px;font-weight:600}
+.deck-nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.deck-nav a.active{color:#fff;background:var(--primary)}
+.deck-nav .dn-tag{margin-left:auto;font-size:11px;font-weight:700;color:var(--accent-light)}
+@media(max-width:860px){.deck-nav{flex-wrap:wrap;height:auto;padding:6px 12px;font-size:12px}.deck-nav .dn-tag{display:none}}
+
+.caption{max-width:1080px;margin:20px auto 12px;padding:0 24px}
+.caption h1{font-size:21px;font-weight:800;color:var(--primary-dark)}
+.caption p{color:var(--ink2);font-size:14px;margin-top:2px}
+
+.app{max-width:1080px;margin:0 auto 60px;padding:0 24px}
+.screen{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--soft-h)}
+
+/* app bar */
+.abar{display:flex;align-items:center;gap:14px;padding:14px 22px;border-bottom:1px solid var(--surface)}
+.abar .lg{font-weight:800;font-size:14px;color:var(--primary-dark)}
+.abar .lg b{color:var(--accent)}
+.abar .tabs{display:flex;gap:4px;margin-left:8px}
+.abar .tabs a{font-size:13px;font-weight:600;color:var(--ink2);padding:6px 12px;border-radius:980px;text-decoration:none}
+.abar .tabs a.on{background:var(--surface);color:var(--ink)}
+.abar .me{margin-left:auto;display:flex;align-items:center;gap:10px}
+.abar .me .av{width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px}
+.abar .me span{font-size:13px;font-weight:600}
+
+/* profile hero */
+.phero{background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:#fff;padding:26px 28px}
+.phead{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.phead .pav{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.32);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px}
+.phead .pinfo b{font-size:20px;font-weight:800;display:block;letter-spacing:-.01em}
+.phead .pinfo span{font-size:13px;color:rgba(255,255,255,.85)}
+.phead .theme{margin-left:auto;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:980px;padding:7px 14px;font-size:12px;font-weight:700;letter-spacing:.04em}
+.theme i{color:var(--accent-light);font-style:normal}
+/* journey path */
+.ppath{display:flex;align-items:center;margin:22px 0 6px;overflow-x:auto;padding-bottom:4px}
+.pstep{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+.pstep .d{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+.pstep.done .d{background:var(--svc);color:#fff} .pstep.cur .d{background:var(--accent);color:#fff} .pstep.next .d{background:rgba(255,255,255,.25);color:#fff}
+.pstep .nm{font-size:13px;font-weight:700;white-space:nowrap} .pstep.next .nm{color:rgba(255,255,255,.7)}
+.pstep .ln{width:40px;height:3px;background:rgba(255,255,255,.22);margin:0 10px;border-radius:3px}
+/* stat tiles */
+.pstats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+@media(max-width:680px){.pstats{grid-template-columns:repeat(2,1fr)}}
+.pst{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:14px 16px}
+.pst .k{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.pst .l{font-size:11px;color:rgba(255,255,255,.8);font-weight:600;margin-top:2px}
+
+/* body */
+.pbody{padding:24px 28px;display:grid;grid-template-columns:1.6fr 1fr;gap:22px}
+@media(max-width:860px){.pbody{grid-template-columns:1fr}}
+.block{margin-bottom:24px}
+.block .bh{display:flex;align-items:center;margin-bottom:13px}
+.block .bh h3{font-size:16px;font-weight:800;color:var(--primary-dark);letter-spacing:-.01em}
+.block .bh .more{margin-left:auto;font-size:12px;font-weight:700;color:var(--primary)}
+
+/* milestone tier card */
+.tiercard{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--soft);padding:18px 20px}
+.tiercard .row{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px}
+.tiercard .now{font-size:14px;font-weight:800;color:var(--accent)}
+.tiercard .nx{font-size:12px;color:var(--ink2)}
+.tbar{height:10px;background:var(--surface);border-radius:8px;overflow:hidden}
+.tbar i{display:block;height:100%;background:linear-gradient(90deg,var(--grow),var(--primary));border-radius:8px}
+.tiercard .hint{font-size:12.5px;color:var(--ink2);margin-top:9px}
+.tiercard .hint b{color:var(--primary-dark)}
+
+/* honors grid */
+.hgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:560px){.hgrid{grid-template-columns:repeat(2,1fr)}}
+.honor{border:1px solid var(--line);border-radius:14px;padding:13px;text-align:center;background:#fff;box-shadow:var(--soft)}
+.honor .b{width:44px;height:44px;border-radius:12px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#fff}
+.honor .hn{font-size:12.5px;font-weight:700;line-height:1.2}
+.honor .cl{margin-top:8px;font-size:10.5px;font-weight:800;border-radius:980px;padding:4px 0;display:block}
+.honor.earned .cl{background:#fff7ec;color:#9a5b06;border:1px solid var(--accent-light)}
+.honor.claimed .cl{background:#eafaf2;color:#1c7a4d;border:1px solid #bfe6cf}
+.honor.prog{opacity:.6}.honor.prog .cl{background:var(--surface);color:var(--ink2)}
+.b.c1{background:var(--adv)}.b.c2{background:var(--pf)}.b.c3{background:var(--mg)}.b.c4{background:var(--serve)}.b.c5{background:var(--primary)}.b.c6{background:var(--bi-red)}
+
+/* missions list */
+.mlist{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--soft);overflow:hidden}
+.mrow{display:flex;align-items:center;gap:12px;padding:13px 16px;border-top:1px solid var(--surface)}
+.mrow:first-child{border-top:none}
+.mrow .mi{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;flex-shrink:0}
+.mrow .mx{flex:1}.mrow .mx b{font-size:13.5px}.mrow .mx span{display:block;font-size:12px;color:var(--ink2)}
+.mrow .mv{font-weight:800;color:var(--primary);background:var(--surface);border-radius:980px;padding:4px 11px;font-size:12px;white-space:nowrap}
+
+/* sidebar cards */
+.scard{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--soft);overflow:hidden;margin-bottom:18px}
+.scard .sh{padding:14px 18px;border-bottom:1px solid var(--surface);font-size:14px;font-weight:800;color:var(--primary-dark)}
+.scard .sb{padding:16px 18px}
+.wear{display:flex;gap:10px;flex-wrap:wrap;padding:14px 18px}
+.wear .w{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px}
+.club .ck{font-size:26px;font-weight:800;color:var(--primary-dark);letter-spacing:-.02em}
+.club .cl{font-size:12.5px;color:var(--ink2)}
+.club .cbar{height:8px;background:var(--surface);border-radius:8px;overflow:hidden;margin:12px 0 6px}
+.club .cbar i{display:block;height:100%;width:72%;background:linear-gradient(90deg,var(--grow),var(--primary))}
+.act .arow{display:flex;align-items:center;gap:11px;padding:11px 18px;border-top:1px solid var(--surface)}
+.act .arow:first-child{border-top:none}
+.act .ai{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;flex-shrink:0}
+.act .ax{flex:1}.act .ax b{font-size:12.5px}.act .ax span{display:block;font-size:11px;color:var(--ink2)}
+.act .ago{font-size:11px;color:var(--ink2)}
+
+.verse{font-style:italic;color:var(--ink2);font-size:12.5px;text-align:center;padding:14px;border-top:1px solid var(--surface)}
+.verse b{color:var(--primary-dark);font-style:normal}
+.note{max-width:1080px;margin:0 auto 50px;padding:0 24px;font-size:12px;color:var(--ink2)}
+</style>
+</head>
+<body>
+
+<nav class="deck-nav">
+  <span class="dn-brand">GNYC Youth Store</span>
+  <a href="youth-store-conops.html">1 &middot; Concept of Operations</a>
+  <a href="youth-store-staff.html">2 &middot; Staff Portal</a>
+  <a href="youth-store-public.html">3 &middot; Public Store</a>
+  <a href="youth-store-journey.html">4 &middot; The Journey</a>
+  <a href="youth-store-myjourney.html" class="active">5 &middot; My Journey</a>
+  <span class="dn-tag">MEMBER SCREEN &middot; signed in</span>
+</nav>
+
+<div class="caption">
+  <h1>My Journey &mdash; a signed-in member</h1>
+  <p>What a youth sees after signing in. Their real growth (from our records) becomes a living, rewarded journey.</p>
+</div>
+
+<div class="app">
+  <div class="screen">
+
+    <!-- app bar -->
+    <div class="abar">
+      <span class="lg">GNYC Youth <b>&middot; My Journey</b></span>
+      <div class="tabs"><a class="on">Journey</a><a>Store</a><a>Pickups</a></div>
+      <div class="me"><span>Maria Santos</span><div class="av">MS</div></div>
+    </div>
+
+    <!-- profile hero -->
+    <div class="phero">
+      <div class="phead">
+        <div class="pav">MS</div>
+        <div class="pinfo"><b>Welcome back, Maria &#128075;</b><span>Pathfinder &middot; Explorer class &middot; Richmond Hill Pathfinder Club</span></div>
+        <div class="theme">2026 Theme &middot; <i>Be Intentional</i></div>
+      </div>
+      <div class="ppath">
+        <div class="pstep done"><span class="d">&#10003;</span><span class="nm">Adventurer</span></div>
+        <div class="ln"></div>
+        <div class="pstep cur"><span class="d">&#9733;</span><span class="nm">Pathfinder &mdash; Explorer</span></div>
+        <div class="ln"></div>
+        <div class="pstep next"><span class="d">&#8226;</span><span class="nm">Master Guide</span></div>
+      </div>
+      <div class="pstats">
+        <div class="pst"><div class="k">14</div><div class="l">Honors earned</div></div>
+        <div class="pst"><div class="k">720</div><div class="l">Milestones</div></div>
+        <div class="pst"><div class="k">Pressing On</div><div class="l">Current tier</div></div>
+        <div class="pst"><div class="k">3</div><div class="l">Patches to claim</div></div>
+      </div>
+    </div>
+
+    <!-- body -->
+    <div class="pbody">
+
+      <!-- main column -->
+      <div>
+        <!-- milestone tier -->
+        <div class="block">
+          <div class="bh"><h3>&#128081; Your trail</h3></div>
+          <div class="tiercard">
+            <div class="row"><span class="now">Pressing On</span><span class="nx">Next: Faithful Servant &middot; 1,000</span></div>
+            <div class="tbar"><i style="width:72%"></i></div>
+            <div class="hint"><b>280 milestones</b> to <b>Faithful Servant</b> &mdash; unlocks a <b>mission-trip credit</b> &amp; camp scholarship help.</div>
+          </div>
+        </div>
+
+        <!-- honors -->
+        <div class="block">
+          <div class="bh"><h3>&#127941; My honors</h3><span class="more">View all 14 &rsaquo;</span></div>
+          <div class="hgrid">
+            <div class="honor earned"><div class="b c5">&#128694;</div><div class="hn">Camping Skills</div><span class="cl">Claim patch &rsaquo;</span></div>
+            <div class="honor earned"><div class="b c3">&#127946;</div><div class="hn">Swimming</div><span class="cl">Claim patch &rsaquo;</span></div>
+            <div class="honor earned"><div class="b c4">&#9937;</div><div class="hn">First Aid</div><span class="cl">Claim patch &rsaquo;</span></div>
+            <div class="honor claimed"><div class="b c1">&#127755;</div><div class="hn">Christian Citizenship</div><span class="cl">Claimed &#10003;</span></div>
+            <div class="honor claimed"><div class="b c2">&#127912;</div><div class="hn">Drawing</div><span class="cl">Claimed &#10003;</span></div>
+            <div class="honor claimed"><div class="b c3">&#11088;</div><div class="hn">Astronomy</div><span class="cl">Claimed &#10003;</span></div>
+            <div class="honor prog"><div class="b c4">&#127807;</div><div class="hn">Friendship</div><span class="cl">In progress</span></div>
+            <div class="honor prog"><div class="b c6">&#128218;</div><div class="hn">Bible Year</div><span class="cl">In progress</span></div>
+          </div>
+        </div>
+
+        <!-- next missions -->
+        <div class="block">
+          <div class="bh"><h3>&#129517; Keep going &mdash; missions for you</h3></div>
+          <div class="mlist">
+            <div class="mrow"><span class="mi" style="background:var(--mg)">&#128218;</span><div class="mx"><b>Finish your Bible Year plan</b><span>Grow &middot; you&rsquo;re 80% there</span></div><span class="mv">+30</span></div>
+            <div class="mrow"><span class="mi" style="background:var(--serve)">&#129309;</span><div class="mx"><b>Join the spring service project</b><span>Serve &middot; April 12 &middot; Queens</span></div><span class="mv">+40</span></div>
+            <div class="mrow"><span class="mi" style="background:var(--belong)">&#128107;</span><div class="mx"><b>Bring a friend to club</b><span>Belong &middot; invite a friend along</span></div><span class="mv">+25</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- sidebar -->
+      <div>
+        <div class="scard">
+          <div class="sh">&#128085; Patches I wear</div>
+          <div class="wear">
+            <div class="w" style="background:var(--adv)">&#127755;</div>
+            <div class="w" style="background:var(--pf)">&#127912;</div>
+            <div class="w" style="background:var(--mg)">&#11088;</div>
+            <div class="w" style="background:var(--surface);color:var(--ink2);border:1px dashed var(--line)">+3</div>
+          </div>
+          <div style="padding:0 18px 16px;font-size:12px;color:var(--ink2)">3 more earned &mdash; claim them to wear.</div>
+        </div>
+
+        <div class="scard club">
+          <div class="sh">&#9968;&#65039; My club &mdash; growing together</div>
+          <div class="sb">
+            <div class="ck">128 honors</div>
+            <div class="cl">earned this year by 24 members &middot; Richmond Hill</div>
+            <div class="cbar"><i></i></div>
+            <div class="cl">72% toward the club&rsquo;s growth goal</div>
+          </div>
+        </div>
+
+        <div class="scard act">
+          <div class="sh">&#128276; Recent</div>
+          <div class="arow"><span class="ai" style="background:var(--accent)">&#127881;</span><div class="ax"><b>You reached the Pressing On tier</b><span>+ early access to drops</span></div><span class="ago">1d</span></div>
+          <div class="arow"><span class="ai" style="background:var(--serve)">&#9937;</span><div class="ax"><b>You earned the First Aid honor</b><span>+50 milestones</span></div><span class="ago">3d</span></div>
+          <div class="arow"><span class="ai" style="background:var(--svc)">&#127941;</span><div class="ax"><b>You claimed your Astronomy patch</b><span>now on your sash</span></div><span class="ago">1w</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="verse">&ldquo;Be very careful, then, how you live &mdash; making the most of every opportunity.&rdquo; <b>&mdash; Ephesians 5:15-16</b> &nbsp;&middot;&nbsp; Be Intentional &middot; 2026</div>
+  </div>
+</div>
+
+<div class="note"><b>Member screen &middot; illustrative.</b> Sample member, honors, and figures are placeholders. Signs in via Authentik; honors/ranks &amp; milestones come from EspoCRM. Recognition is encouragement &mdash; stewardship, not status.</div>
+
+</body>
+</html>
